@@ -23,7 +23,11 @@
    :else (recur (rest seq1) (rest seq2))))
 
 (defn find-first-index [pred a-seq]
-  ":(")
+  (loop [indx 0
+         a-seq a-seq]
+    (cond (empty? a-seq) nil
+          (pred (first a-seq)) indx
+          :else (recur (inc indx) (rest a-seq)))))
 
 (defn avg [a-seq]
   -1)
@@ -37,4 +41,4 @@
 (defn cut-at-repetition [a-seq]
   [":("])
 
-(seq= [1 2 4] '(1 2 4))
+(find-first-index nil? [])
