@@ -60,6 +60,12 @@
       (recur fn (+ fn-1 fn) (dec n)))))
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+  (loop [res []
+         seq a-seq]
+    (println res)
+    (if (or (empty? seq)
+            (contains? (set res) (first seq)))
+      res
+      (recur (conj res (first seq)) (rest seq)))))
 
-(fast-fibo 6)
+
