@@ -30,7 +30,14 @@
           :else (recur (inc indx) (rest a-seq)))))
 
 (defn avg [a-seq]
-  -1)
+  (if (empty? a-seq)
+    nil
+    (loop [num 0
+           total 0
+           a-seq a-seq]
+      (if (empty? a-seq)
+        (/ total num)
+        (recur (inc num) (+ total (first a-seq)) (rest a-seq))))))
 
 (defn parity [a-seq]
   ":(")
@@ -41,4 +48,5 @@
 (defn cut-at-repetition [a-seq]
   [":("])
 
-(find-first-index nil? [])
+(avg [1 2 3])
+
