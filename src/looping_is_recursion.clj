@@ -39,14 +39,27 @@
         (/ total num)
         (recur (inc num) (+ total (first a-seq)) (rest a-seq))))))
 
+(defn toggle [a-set elem]
+  (if (contains? a-set elem)
+    (disj a-set elem)
+    (conj a-set elem)))
+
 (defn parity [a-seq]
-  ":(")
+  (loop [result #{}
+         a-seq a-seq]
+    (if (empty? a-seq)
+      result
+      (recur (toggle result (first a-seq)) (rest a-seq)))))
 
 (defn fast-fibo [n]
-  ":(")
+  (loop [fn-1 0
+         fn 1
+         n n]
+    (if (= n 0)
+      fn-1
+      (recur fn (+ fn-1 fn) (dec n)))))
 
 (defn cut-at-repetition [a-seq]
   [":("])
 
-(avg [1 2 3])
-
+(fast-fibo 6)
